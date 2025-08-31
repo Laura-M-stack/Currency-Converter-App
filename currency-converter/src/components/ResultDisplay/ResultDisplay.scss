@@ -1,0 +1,24 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.result {
+  margin-top: v.$spacing-md;
+
+  p {
+    font-size: v.$font-lg;
+    font-weight: bold;
+    color: var(--text-color); // 🔁 Reemplazado
+  }
+
+  small {
+    display: block;
+    margin-top: v.$spacing-sm;
+    color: var(--secondary-color);
+  }
+
+  @include m.respond(sm) {
+    p {
+      font-size: v.$font-md;
+    }
+  }
+}

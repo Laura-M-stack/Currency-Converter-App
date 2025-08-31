@@ -1,0 +1,55 @@
+@use './variables' as v;
+@use './mixins' as m;
+
+.wrapper {
+  max-width: 700px;
+  margin: auto;
+  padding: v.$spacing-lg v.$spacing-md;
+
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-lg;
+  align-items: center;
+  justify-content: center;
+}
+
+.conversion-form {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-md;
+}
+
+.row {
+  display: flex;
+  align-items: flex-end;
+  gap: v.$spacing-md;
+
+  @include m.respond(sm) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.conversion-result {
+  p.error {
+    color: v.$error-color;
+    font-weight: bold;
+  }
+}
+
+.convert-btn {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background-color: v.$primary-color;
+  color: v.$text;
+  border: none;
+  border-radius: v.$radius-md;
+  cursor: pointer;
+  width: 80%;
+
+  &:hover {
+    background-color: #490089;
+    color: whitesmoke;
+  }
+}

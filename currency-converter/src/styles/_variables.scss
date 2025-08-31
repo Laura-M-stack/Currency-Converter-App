@@ -1,0 +1,36 @@
+// Light mode values
+$primary: #6d00f3;
+$secondary: #1a1a1a;
+$text-light: #150c2f;
+$bg-light: #d6a8ff;
+$select-bg-light: #af66f4;
+$error: #e63946;
+
+// Dark mode values
+$dark-text: #d6a8ff;
+$dark-bg: #150c2f;
+$dark-secondary: #999;
+$dark-select-bg: #2d0444;
+
+// Tokens using CSS variables (used in components)
+$primary-color: var(--primary-color);
+$secondary: var(--secondary-color);
+$text: var(--text-color);
+$background: var(--background-color);
+$select-bg: var(--select-bg);
+$error-color: var(--error-color);
+
+// Spacing
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 2rem;
+
+// Font sizes
+$font-sm: 0.875rem;
+$font-md: 1rem;
+$font-lg: 2rem;
+
+// Border radius
+$radius-sm: 4px;
+$radius-md: 6px;
+$radius-lg: 10px;

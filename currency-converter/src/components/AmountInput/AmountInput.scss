@@ -1,0 +1,22 @@
+@use '../../styles/variables' as v;
+
+.amount-input {
+  margin-bottom: 1rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+  }
+
+  input {
+    color: v.$text;
+    max-width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 2px solid v.$primary;
+    border-radius: v.$radius-md;
+    background-color: v.$select-bg;
+    margin: 0;
+  }
+}

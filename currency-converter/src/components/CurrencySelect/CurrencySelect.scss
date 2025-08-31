@@ -1,0 +1,31 @@
+@use '../../styles/variables' as v;
+
+.currency-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+
+  label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+    color: v.$text;
+  }
+
+  select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 2px solid v.$primary;
+    border-radius: 6px;
+    background-color: v.$select-bg;
+    color: v.$text;
+    transition: border-color 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: v.$primary;
+    }
+  }
+}

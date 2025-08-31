@@ -1,0 +1,30 @@
+@use '../../styles/variables' as v;
+
+.footer {
+  text-align: center;
+  padding: v.$spacing-md;
+  font-size: v.$font-sm;
+  color: v.$text;
+  border-top: 1px solid #ddd;
+  margin-top: v.$spacing-lg;
+
+  a {
+    display: inline-block;
+    margin-top: v.$spacing-sm;
+    color: v.$primary;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.dark .footer {
+  border-top: 1px solid #444;
+  color: v.$dark-text;
+
+  a {
+    color: v.$primary;
+  }
+}

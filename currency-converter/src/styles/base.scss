@@ -1,0 +1,27 @@
+@use './variables' as v;
+
+:root {
+  --primary-color: #6d00f3;
+  --secondary-color: #1a1a1a;
+  --text-color: #150c2f;
+  --background-color: #d6a8ff;
+  --select-bg: #af66f4;
+  --error-color: #e63946;
+}
+
+.dark {
+  --primary-color: #6d00f3;
+  --secondary-color: #999;
+  --text-color: #d6a8ff;
+  --background-color: #150c2f;
+  --select-bg: #2d0444;
+  --error-color: #e63946;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background-color: v.$background;
+  color: v.$text;
+  transition: background 0.3s, color 0.3s;
+}

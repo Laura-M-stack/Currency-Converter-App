@@ -1,0 +1,28 @@
+@use '../../styles/variables' as v;
+
+.history {
+  margin-top: v.$spacing-md;
+
+  h2 {
+    font-size: v.$font-md;
+    margin-bottom: v.$spacing-sm;
+    color: v.$text;
+  }
+
+  ul {
+    padding-left: 1rem;
+    list-style-type: disc;
+
+    li {
+      margin-bottom: 0.25rem;
+      color: v.$text;
+    }
+  }
+}
+
+.dark .history {
+  h2,
+  li {
+    color: v.$dark-text;
+  }
+}

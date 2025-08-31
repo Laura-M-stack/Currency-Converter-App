@@ -1,0 +1,36 @@
+@use '../../styles/variables' as v;
+
+.dark-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid v.$text;
+  border-radius: v.$radius-md;
+  padding: v.$spacing-sm v.$spacing-md;
+  font-size: v.$font-md;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: v.$text;
+
+  .icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  &:hover {
+    background-color: v.$primary;
+    color: #fff;
+    border-color: v.$primary;
+  }
+
+  &:focus {
+    outline: 2px solid v.$primary;
+    outline-offset: 2px;
+  }
+}
+
+.dark .dark-toggle {
+  border-color: v.$dark-text;
+  color: v.$dark-text;
+}
