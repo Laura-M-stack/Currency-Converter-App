@@ -1,22 +1,37 @@
 @use './variables' as v;
 
 :root {
-  --primary-color: #6d00f3;
-  --secondary-color: #1a1a1a;
-  --text-color: #150c2f;
-  --background-color: #d6a8ff;
-  --select-bg: #af66f4;
-  --error-color: #e63946;
+  --primary-color: #0077b6;
+  --secondary-color: #01a8ef;
+  --text-color: #0a1a2f; 
+  --title-text: #ffffff;
+  --background-color: #caf0f8;
+  --select-bg: #90e0ef;
+  --error-color: #e63946;    
+  --input-bg: #ffffff;
+  --input-border: rgba(0, 0, 0, 0.15);
+  --pill-bg: #e5e7eb;
+  --pill-text: #111827;
+  --muted-text: #4b5563;
+  --accent-color: #38bdf8;
 }
 
 .dark {
-  --primary-color: #6d00f3;
-  --secondary-color: #999;
-  --text-color: #d6a8ff;
-  --background-color: #150c2f;
-  --select-bg: #2d0444;
+  --background-color: #020617;
+  --secondary-color: #01a8ef;
+  --text-color: #e2e8f0;
+  --title-text: #ffffff;
+  --select-bg: #020f2a;
+  --primary-color: #38bdf8;
   --error-color: #e63946;
+  --input-bg: #020617;
+  --input-border: #1e293b;
+  --pill-bg: #e5e7eb;
+  --pill-text: #111827;
+  --muted-text: #9ca3af;
+  --accent-color: #38bdf8;
 }
+
 
 body {
   margin: 0;
