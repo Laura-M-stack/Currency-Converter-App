@@ -4,27 +4,22 @@
   text-align: center;
   padding: v.$spacing-md;
   font-size: v.$font-sm;
-  color: v.$text;
-  border-top: 1px solid #ddd;
-  margin-top: v.$spacing-lg;
+  color: var(--text-color);
+  border-top: 1px solid var(--accent-color);
+  margin-top: 0;
+  opacity: 0.9;
 
   a {
     display: inline-block;
     margin-top: v.$spacing-sm;
-    color: v.$primary;
+    color: var(--primary-color);
     text-decoration: none;
+    font-weight: 500;
+    transition: color 0.15s ease;
 
     &:hover {
       text-decoration: underline;
+      color: var(--accent-color);
     }
-  }
-}
-
-.dark .footer {
-  border-top: 1px solid #444;
-  color: v.$dark-text;
-
-  a {
-    color: v.$primary;
   }
 }

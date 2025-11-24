@@ -1,35 +1,139 @@
 @use '../../styles/variables' as v;
 
 .locale-select {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: v.$spacing-md;
-  gap: v.$spacing-sm;
+  gap: 0.35rem;
+  position: relative;
+}
 
-  label {
-    font-size: v.$font-md;
-    color: v.$text;
-  }
+.locale-select__header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
 
-  select {
-    padding: v.$spacing-sm;
-    font-size: v.$font-md;
-    border: 2px solid v.$primary;
-    border-radius: v.$radius-md;
-    min-width: 160px;
-    color: v.$text;
-    background-color: v.$select-bg;
+.info-icon {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  cursor: help;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.info-icon:hover {
+  opacity: 1;
+}
+
+.tooltip-bubble {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translate(0.75rem, -50%);
+  min-width: 260px;
+  max-width: 380px;
+  background: var(--select-bg);
+  border: 1px solid var(--accent-color);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--text-color);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.16s ease, transform 0.16s ease;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.65);
+  white-space: normal;
+  z-index: 10;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translate(50%, -50%) rotate(45deg);
+    width: 9px;
+    height: 9px;
+
+    background: inherit;
+    border-left: 1px solid var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
   }
 }
 
-.dark .locale-select {
-  label,
-  select {
-    color: v.$dark-text;
-  }
+.info-icon:hover .tooltip-bubble {
+  opacity: 1;
+  transform: translate(0.75rem, -50%) translateY(-1px);
+}
 
-  select {
-    background-color: v.$dark-select-bg;
-    border-color: #444;
-  }
+.select-shell {
+  position: relative;
+}
+
+.select-shell select {
+  width: 100%;
+  padding: 0.55rem 2.1rem 0.55rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid var(--accent-color);
+  background: color-mix(in srgb, var(--background-color) 88%, white 12%);
+  color: var(--text-color);
+  font-size: 0.95rem;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.select-shell select:hover {
+  background: color-mix(in srgb, var(--background-color) 80%, white 20%);
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.select-shell select:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+.select-chevron {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.dark .select-shell select {
+  background: color-mix(in srgb, var(--secondary-color) 82%, black 18%);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: var(--text-color);
+}
+
+.dark .select-shell select:hover {
+  background: color-mix(in srgb, var(--secondary-color) 72%, black 28%);
+  border-color: var(--primary-color);
+}
+
+.dark .tooltip-bubble {
+  background: #102b93;
+  border-color: rgba(148, 163, 184, 0.9);
+  color: #e5e7eb;
 }

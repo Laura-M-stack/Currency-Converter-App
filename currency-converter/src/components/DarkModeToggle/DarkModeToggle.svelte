@@ -23,15 +23,28 @@
   title={dark ? 'Light mode' : 'Dark mode'}
 >
   {#if dark}
-    <!-- Light icon -->
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 3a1 1 0 011 1v1.06a7.978 7.978 0 014.242 1.757l.752-.752a1 1 0 011.414 1.414l-.752.752A7.978 7.978 0 0120.94 11H22a1 1 0 110 2h-1.06a7.978 7.978 0 01-1.757 4.242l.752.752a1 1 0 01-1.414 1.414l-.752-.752A7.978 7.978 0 0113 19.94V21a1 1 0 11-2 0v-1.06a7.978 7.978 0 01-4.242-1.757l-.752.752a1 1 0 01-1.414-1.414l.752-.752A7.978 7.978 0 013.06 13H2a1 1 0 110-2h1.06a7.978 7.978 0 011.757-4.242l-.752-.752a1 1 0 011.414-1.414l.752.752A7.978 7.978 0 0111 4.06V3a1 1 0 011-1z" />
-    </svg>
+<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"
+     fill="none" stroke="currentColor" stroke-width="2"
+     stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="4" />
+  <line x1="12" y1="2" x2="12" y2="5" />
+  <line x1="12" y1="19" x2="12" y2="22" />
+  <line x1="4.22" y1="4.22" x2="6.34" y2="6.34" />
+  <line x1="17.66" y1="17.66" x2="19.78" y2="19.78" />
+  <line x1="2" y1="12" x2="5" y2="12" />
+  <line x1="19" y1="12" x2="22" y2="12" />
+  <line x1="4.22" y1="19.78" x2="6.34" y2="17.66" />
+  <line x1="17.66" y1="6.34" x2="19.78" y2="4.22" />
+</svg>
+
   {:else}
-    <!-- Dark icon -->
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M21.75 12.007a9.75 9.75 0 01-9.743 9.743 9.57 9.57 0 01-3.634-.705.75.75 0 01-.175-1.28A8.25 8.25 0 0012 3.757c.27 0 .538.014.803.042a.75.75 0 01.557 1.107 8.247 8.247 0 007.686 7.101.75.75 0 01.704.75z" />
-    </svg>
+<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"
+     fill="none" stroke="currentColor" stroke-width="2"
+     stroke-linecap="round" stroke-linejoin="round">
+  <path d="M21 12.79A9 9 0 1 1 11.21 3
+           7 7 0 0 0 21 12.79z" />
+</svg>
+
   {/if}
 </button>
 

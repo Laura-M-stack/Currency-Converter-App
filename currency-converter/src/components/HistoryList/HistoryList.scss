@@ -1,28 +1,88 @@
 @use '../../styles/variables' as v;
 
 .history {
-  margin-top: v.$spacing-md;
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 
-  h2 {
-    font-size: v.$font-md;
-    margin-bottom: v.$spacing-sm;
-    color: v.$text;
+  .history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      font-size: 1rem;
+      margin: 0;
+      font-weight: 600;
+      color: var(--text-color);
+    }
   }
 
-  ul {
-    padding-left: 1rem;
-    list-style-type: disc;
+  .history-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
 
-    li {
-      margin-bottom: 0.25rem;
-      color: v.$text;
+  .chip {
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    color: var(--text-color);
+    background: color-mix(in srgb, var(--background-color) 80%, white 10%);
+    border: 1px solid var(--accent-color);
+    max-width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .clear-btn {
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    padding: 0.25rem 0.6rem;
+    font-size: 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--text-color);
+
+    transition:
+      background 0.15s ease,
+      color 0.15s ease,
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
+
+    &:hover {
+      background: var(--primary-color);
+      color: #ffffff;
+      border-color: var(--primary-color);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 3px;
     }
   }
 }
 
 .dark .history {
-  h2,
-  li {
-    color: v.$dark-text;
+  .chip {
+    background: color-mix(in srgb, var(--secondary-color) 85%, black 15%);
+    border-color: rgba(148, 163, 184, 0.4);
+    color: var(--text-color);
+  }
+
+  .clear-btn {
+    color: var(--text-color);
+    border-color: rgba(255, 255, 255, 0.25);
+
+    &:hover {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+      color: #ffffff;
+    }
   }
 }

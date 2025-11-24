@@ -1,15 +1,32 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
+  import type { UiTexts } from '../../i18n';
+
   export let history: string[] = [];
+  export let texts: UiTexts;
+
+  const dispatch = createEventDispatcher<{ clear: void }>();
+
+  function handleClear() {
+    dispatch('clear');
+  }
 </script>
 
 {#if history.length > 0}
   <div class="history">
-    <h2>Recent conversions</h2>
-    <ul>
+    <div class="history-header">
+      <h2>{texts.historyTitle}</h2>
+
+      <button class="clear-btn" on:click={handleClear}>
+        {texts.clearHistory}
+      </button>
+    </div>
+
+    <div class="history-chips">
       {#each history as item}
-        <li>{item}</li>
+        <span class="chip">{item}</span>
       {/each}
-    </ul>
+    </div>
   </div>
 {/if}
 

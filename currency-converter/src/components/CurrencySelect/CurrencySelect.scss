@@ -1,31 +1,128 @@
 @use '../../styles/variables' as v;
 
 .currency-select {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  align-items: center;
-  justify-content: center;
+  gap: 0.3rem;
 
-  label {
+  .input-label {
     font-weight: 600;
-    font-size: 0.95rem;
-    margin-bottom: 0.25rem;
-    color: v.$text;
+    font-size: 0.9rem;
+    color: var(--text-color);
+  }
+}
+
+.select-shell {
+  position: relative;
+}
+
+.select-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+  background: color-mix(in srgb, var(--background-color) 88%, white 12%);
+  border: 1px solid var(--accent-color);
+  padding: 0.55rem 0.8rem;
+
+  border-radius: 6px;
+  color: var(--text-color);
+  font-size: 0.95rem;
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover {
+    background: color-mix(in srgb, var(--background-color) 80%, white 20%);
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
   }
 
-  select {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 2px solid v.$primary;
-    border-radius: 6px;
-    background-color: v.$select-bg;
-    color: v.$text;
-    transition: border-color 0.2s;
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+  }
 
-    &:focus {
-      outline: none;
-      border-color: v.$primary;
+  .select-trigger__value {
+    flex: 1;
+    text-align: left;
+  }
+
+  .select-trigger__chevron {
+    font-size: 0.8rem;
+    opacity: 0.7;
+  }
+}
+
+.select-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: 0.35rem;
+  z-index: 900;
+
+  max-height: 220px;
+  overflow-y: auto;
+
+  padding: 0.25rem 0;
+
+  background: color-mix(in srgb, var(--background-color) 90%, white 10%);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 0.55rem;
+  box-shadow:
+    0 16px 26px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+
+  list-style: none;
+
+  button {
+    width: 100%;
+    padding: 0.4rem 0.9rem;
+    background: transparent;
+    border: none;
+    text-align: left;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.14s ease;
+
+    &:hover {
+      background: color-mix(in srgb, var(--primary-color) 20%, black 5%);
     }
+
+    &.selected {
+      background: color-mix(in srgb, var(--primary-color) 35%, black 10%);
+      color: #ffffff;
+      font-weight: 600;
+    }
+  }
+}
+
+.dark .select-trigger {
+  background: color-mix(in srgb, var(--secondary-color) 82%, black 18%);
+  border-color: rgba(255, 255, 255, 0.16);
+
+  &:hover {
+    background: color-mix(in srgb, var(--secondary-color) 72%, black 28%);
+    border-color: var(--primary-color);
+  }
+}
+
+.dark .select-menu {
+  background: color-mix(in srgb, var(--secondary-color) 85%, black 15%);
+  border-color: rgba(255, 255, 255, 0.16);
+
+  button:hover {
+    background: color-mix(in srgb, var(--primary-color) 22%, black 20%);
+  }
+
+  button.selected {
+    background: color-mix(in srgb, var(--primary-color) 35%, black 25%);
   }
 }
