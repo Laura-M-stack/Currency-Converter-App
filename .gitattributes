@@ -1,2 +1,14 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+* text=auto eol=lf
+
+*.svelte text
+*.ts     text
+*.js     text
+*.json   text
+*.scss   text
+*.css    text
+*.md     text
+
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.ico    binary
