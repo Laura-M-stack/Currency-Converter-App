@@ -154,7 +154,7 @@
           <p class="error">{error}</p>
         {:else}
           {#key `${locale}-${lang}`}
-            <ResultDisplay {result} {from} {to} {rate} {locale} {texts} />
+            <ResultDisplay {result} {from} {to} {rate} {locale} {texts} {lang} />
           {/key}
         {/if}
       </section>

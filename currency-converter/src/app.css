@@ -1,4 +1,3 @@
-
 *,
 *::before,
 *::after {
@@ -9,13 +8,25 @@ html,
 body {
   margin: 0;
   padding: 0;
+  max-height: 100%;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  min-height: 100vh;
+  max-height: 100%;
 }
 
 button {
   font-family: inherit;
+}
+
+footer {
+  margin-top: auto;
+}
+
+
+page-shell {
+  flex: 1;
 }
