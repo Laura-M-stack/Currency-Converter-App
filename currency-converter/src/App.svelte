@@ -17,7 +17,7 @@
 
   let amount: string = "100";
   let from = "USD";
-  let to = "EUR";
+  let to = "ARS";
   let result: number | null = null;
   let rate: number | null = null;
   let loading = false;
