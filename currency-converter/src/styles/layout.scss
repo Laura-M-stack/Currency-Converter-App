@@ -32,7 +32,7 @@
   box-shadow: 0 18px 30px rgba(15, 23, 42, 0.25);
   display: flex;
   flex-direction: column;
-  gap: v.$spacing-lg;
+  gap: v.$spacing-md;
   position: relative;
   z-index: 1;
   overflow: visible;
@@ -74,7 +74,7 @@
 }
 
 .conversion-result {
-  margin-top: 1rem;
+  margin-top: 0;
 
   p.error {
     color: v.$error-color;
@@ -86,6 +86,7 @@
   align-self: flex-start;
   padding: 0.7rem 1.5rem;
   min-width: 9rem;
+  margin-top: v.$spacing-sm;
 
   border: none;
   border-radius: 999px;
@@ -100,7 +101,7 @@
   background-image: linear-gradient(
     90deg,
     #065f9a 0%,
-    #12b3e6 50%,
+    #38caf7 50%,
     #065f9a 100%
   );
   background-size: 200% auto;

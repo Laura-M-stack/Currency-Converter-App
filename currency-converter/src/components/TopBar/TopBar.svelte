@@ -14,7 +14,7 @@
   <div class="top-bar__actions">
     <LanguageDropdown
       current={lang}
-      onChange={onLanguageChange}
+      on:change={(event) => onLanguageChange(event.detail)}
     />
 
     <DarkModeToggle />

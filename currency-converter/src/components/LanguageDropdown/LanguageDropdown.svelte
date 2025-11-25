@@ -1,80 +1,41 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
   import type { Lang } from '../../i18n';
 
   export let current: Lang = 'en';
-  export let onChange: (lang: Lang) => void;
 
-  const options: { code: Lang; short: string; label: string }[] = [
-    { code: 'en', short: 'EN', label: 'English' },
-    { code: 'es', short: 'ES', label: 'Español' },
-    { code: 'fr', short: 'FR', label: 'Français' },
-    { code: 'de', short: 'DE', label: 'Deutsch' },
-    { code: 'pt', short: 'PT', label: 'Português' },
-    { code: 'it', short: 'IT', label: 'Italiano' }
+  const dispatch = createEventDispatcher<{ change: Lang }>();
+
+  const options: { value: Lang; label: string }[] = [
+    { value: 'en', label: 'English' },
+    { value: 'es', label: 'Español' },
+    { value: 'fr', label: 'Français' },
+    { value: 'de', label: 'Deutsch' },
+    { value: 'pt', label: 'Português' },
+    { value: 'it', label: 'Italiano' }
   ];
 
-  let open = false;
-
-  function toggle() {
-    open = !open;
-  }
-
-  function select(lang: Lang) {
-    onChange?.(lang);
-    open = false;
-  }
-
-  function handleTriggerKeydown(event: KeyboardEvent) {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      toggle();
-    } else if (event.key === 'Escape') {
-      open = false;
-    }
-  }
-
-  function handleFocusOut(event: FocusEvent) {
-    const next = event.relatedTarget as Node | null;
-    const root = event.currentTarget as HTMLElement;
-    if (!next || !root.contains(next)) {
-      open = false;
-    }
+  function handleChange(event: Event) {
+    const value = (event.target as HTMLSelectElement).value as Lang;
+    current = value;
+    dispatch('change', value);
   }
 </script>
 
-<div
-  class="lang-dropdown"
-  on:focusout={handleFocusOut}
->
-  <button
-    class="lang-trigger"
-    type="button"
-    on:click={toggle}
-    on:keydown={handleTriggerKeydown}
-    aria-haspopup="listbox"
-    aria-expanded={open}
+<div class="lang-dropdown">
+  <span class="lang-dropdown__icon" aria-hidden="true">🌐</span>
+  <select
+    class="lang-dropdown__select"
+    bind:value={current}
+    on:change={handleChange}
+    aria-label="Language"
   >
-    <span class="lang-trigger__icon" aria-hidden="true">🌐</span>
-    <span class="lang-trigger__code">{current.toUpperCase()}</span>
-    <span class="lang-trigger__chevron" aria-hidden="true">▾</span>
-  </button>
-
-  {#if open}
-    <ul class="lang-menu" role="listbox">
-      {#each options as opt}
-        <li>
-          <button
-            type="button"
-            class:selected={opt.code === current}
-            on:click={() => select(opt.code)}
-          >
-            <span class="lang-menu__short">{opt.short}</span>
-            <span class="lang-menu__label">{opt.label}</span>
-          </button>
-        </li>
-      {/each}
-    </ul>
-  {/if}
+    {#each options as opt}
+      <option value={opt.value}>{opt.label}</option>
+    {/each}
+  </select>
 </div>
 
-<style lang="scss" src="./LanguageDropdown.scss"></style>
+<style lang="scss"> 
+  @import './LanguageDropdown.scss';
+</style>

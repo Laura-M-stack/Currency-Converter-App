@@ -3,6 +3,7 @@
   "compilerOptions": {
     "target": "ES2022",
     "useDefineForClassFields": true,
+    "forceConsistentCasingInFileNames": true, 
     "module": "ESNext",
     "resolveJsonModule": true,
     "allowJs": true,
