@@ -17,7 +17,7 @@
   padding: v.$spacing-lg v.$spacing-xl;
 
   @include m.respond(sm) {
-    padding: v.$spacing-md v.$spacing-lg;
+    padding: v.$spacing-md 0;
   }
 }
 
