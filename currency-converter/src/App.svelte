@@ -15,7 +15,7 @@
 
   import "./styles/layout.scss";
 
-  let amount = 1;
+  let amount: string = "1";
   let from = "USD";
   let to = "EUR";
   let result: number | null = null;
@@ -23,11 +23,31 @@
   let loading = false;
   let history: string[] = [];
   let error: string | null = null;
-
   let lang: Lang = "en";
   let locale = "en-US";
-
   let texts: UiTexts = getUiTexts(lang);
+
+  function parseAndValidateAmount(raw: string): number | null {
+    if (!raw || raw.trim() === "") {
+      return null;
+    }
+
+    // permitir coma o punto como decimal
+    const normalized = raw.replace(",", ".").trim();
+
+    // opcional: limitar a números con hasta 2 decimales
+    if (!/^\d+(\.\d{1,2})?$/.test(normalized)) {
+      return null;
+    }
+
+    const num = Number(normalized);
+
+    if (!Number.isFinite(num)) return null;
+    if (num <= 0) return null; // > 0
+    if (num > 1_000_000_000) return null; // limite razonable
+
+    return num;
+  }
 
   onMount(() => {
     const savedHistory = localStorage.getItem("history");
@@ -54,8 +74,10 @@
   $: texts = getUiTexts(lang);
   $: localStorage.setItem("locale", locale);
 
-  async function fetchConversion() {
-    if (!amount || amount <= 0) {
+   async function fetchConversion() {
+    const parsedAmount = parseAndValidateAmount(amount);
+
+    if (parsedAmount === null) {
       error = texts.errorInvalidAmount;
       result = null;
       rate = null;
@@ -66,11 +88,11 @@
     error = null;
 
     try {
-      const data = await convertCurrency(from, to, amount);
+      const data = await convertCurrency(from, to, parsedAmount);
       result = data.result;
       rate = data.rate;
 
-      const record = `${amount} ${from} → ${data.result.toFixed(2)} ${to}`;
+      const record = `${parsedAmount} ${from} → ${data.result.toFixed(2)} ${to}`;
       history = [...history, record].slice(-5);
       localStorage.setItem("history", JSON.stringify(history));
     } catch (e) {
@@ -123,11 +145,7 @@
           on:click={fetchConversion}
           disabled={loading}
         >
-          {#if loading}
-            {texts.converting}
-          {:else}
-            {texts.convert}
-          {/if}
+          {texts.convert}
         </button>
       </section>
 
@@ -135,7 +153,9 @@
         {#if error}
           <p class="error">{error}</p>
         {:else}
-          <ResultDisplay {result} {from} {to} {rate} {locale} texts={texts} lang={lang} />
+          {#key `${locale}-${lang}`}
+            <ResultDisplay {result} {from} {to} {rate} {locale} {texts} />
+          {/key}
         {/if}
       </section>
 
