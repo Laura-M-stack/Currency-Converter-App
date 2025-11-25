@@ -15,7 +15,7 @@
 
   import "./styles/layout.scss";
 
-  let amount: string = "1";
+  let amount: string = "100";
   let from = "USD";
   let to = "EUR";
   let result: number | null = null;
@@ -23,8 +23,8 @@
   let loading = false;
   let history: string[] = [];
   let error: string | null = null;
-  let lang: Lang = "en";
-  let locale = "en-US";
+  let lang: Lang = "es";
+  let locale = "es-AR";
   let texts: UiTexts = getUiTexts(lang);
 
   function parseAndValidateAmount(raw: string): number | null {
@@ -74,7 +74,7 @@
   $: texts = getUiTexts(lang);
   $: localStorage.setItem("locale", locale);
 
-   async function fetchConversion() {
+  async function fetchConversion() {
     const parsedAmount = parseAndValidateAmount(amount);
 
     if (parsedAmount === null) {
@@ -154,7 +154,15 @@
           <p class="error">{error}</p>
         {:else}
           {#key `${locale}-${lang}`}
-            <ResultDisplay {result} {from} {to} {rate} {locale} {texts} {lang} />
+            <ResultDisplay
+              {result}
+              {from}
+              {to}
+              {rate}
+              {locale}
+              {texts}
+              {lang}
+            />
           {/key}
         {/if}
       </section>
