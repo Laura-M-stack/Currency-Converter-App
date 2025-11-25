@@ -11,7 +11,7 @@
 
   @include m.respond(sm) {
     padding: 0 v.$spacing-sm;
-    min-height: 70vh;
+    min-height: 75vh;
   }
 }
 
@@ -44,8 +44,10 @@
   overflow: visible;
 
   @media (max-width: 576px) {
-    min-height: 90%;
+    min-height: 100%;
     padding-block: 60px;
+    max-width: 95%;
+    margin-inline: auto;
   }
 }
 
@@ -66,7 +68,7 @@
   gap: v.$spacing-md;
 
   @include m.respond(sm) {
-    padding: 0 v.$spacing-sm;
+    padding: 0 v.$spacing-md;
   }
 }
 
@@ -95,6 +97,10 @@
     color: v.$error-color;
     font-weight: bold;
     margin: 0;
+  }
+
+  @include m.respond(sm) {
+    padding: 0 v.$spacing-md;
   }
 }
 
