@@ -8,7 +8,6 @@ export type UiTexts = {
   localeLabel: string;
   localeTooltip: string;
   convert: string;
-  converting: string;
   convertedPrefix: string;
   rateLabel: string;
   inverseRateLabel: string;
@@ -29,7 +28,6 @@ export const TRANSLATIONS: Record<Lang, UiTexts> = {
     localeTooltip:
       'Controls how numbers and currencies are formatted (decimal and thousand separators, symbol position, etc.).',
     convert: 'Convert',
-    converting: 'Converting...',
     convertedPrefix: 'Converted:',
     rateLabel: 'Rate:',
     inverseRateLabel: 'Inverse:',
@@ -37,7 +35,7 @@ export const TRANSLATIONS: Record<Lang, UiTexts> = {
       'You are converting from {from} to {to}. Rates come from open.er-api.com and may change over time.',
     historyTitle: 'Recent conversions',
     clearHistory: 'Clear',
-    errorInvalidAmount: 'Please enter an amount greater than 0.',
+    errorInvalidAmount: 'Please enter a valid positive number.',
     errorFetch: 'Error fetching conversion data. Please try again.'
   },
   es: {
@@ -49,7 +47,6 @@ export const TRANSLATIONS: Record<Lang, UiTexts> = {
     localeTooltip:
       'Define cómo se muestran números y monedas (separadores, símbolo, etc.).',
     convert: 'Convertir',
-    converting: 'Convirtiendo...',
     convertedPrefix: 'Convertido:',
     rateLabel: 'Tasa:',
     inverseRateLabel: 'Inversa:',
@@ -57,7 +54,7 @@ export const TRANSLATIONS: Record<Lang, UiTexts> = {
       'Estás convirtiendo de {from} a {to}. Las tasas provienen de open.er-api.com y pueden variar con el tiempo.',
     historyTitle: 'Conversiones recientes',
     clearHistory: 'Limpiar',
-    errorInvalidAmount: 'Ingresá un monto mayor que 0.',
+    errorInvalidAmount: 'Por favor ingresa un monto positivo válido.',
     errorFetch: 'Hubo un error al obtener la tasa. Intentá nuevamente.'
   },
   fr: {
@@ -69,7 +66,6 @@ export const TRANSLATIONS: Record<Lang, UiTexts> = {
     localeTooltip:
       'Contrôle l’affichage des nombres et des devises (séparateurs, symbole, etc.).',
     convert: 'Convertir',
-    converting: 'Conversion...',
     convertedPrefix: 'Converti :',
     rateLabel: 'Taux :',
     inverseRateLabel: 'Inverse :',
@@ -77,7 +73,7 @@ export const TRANSLATIONS: Record<Lang, UiTexts> = {
       'Vous convertissez de {from} vers {to}. Les taux proviennent de open.er-api.com et peuvent varier.',
     historyTitle: 'Conversions récentes',
     clearHistory: 'Effacer',
-    errorInvalidAmount: 'Veuillez saisir un montant supérieur à 0.',
+    errorInvalidAmount: 'Veuillez saisir un montant positif valide.',
     errorFetch:
       'Erreur lors de la récupération du taux de change. Veuillez réessayer.'
   },
@@ -90,7 +86,6 @@ export const TRANSLATIONS: Record<Lang, UiTexts> = {
     localeTooltip:
       'Steuert, wie Zahlen und Währungen formatiert werden (Trennzeichen, Symbol, usw.).',
     convert: 'Umrechnen',
-    converting: 'Wird umgerechnet...',
     convertedPrefix: 'Umgerechnet:',
     rateLabel: 'Kurs:',
     inverseRateLabel: 'Umgekehrt:',
@@ -98,7 +93,7 @@ export const TRANSLATIONS: Record<Lang, UiTexts> = {
       'Du wandelst von {from} in {to} um. Die Kurse stammen von open.er-api.com und können sich ändern.',
     historyTitle: 'Letzte Umrechnungen',
     clearHistory: 'Löschen',
-    errorInvalidAmount: 'Bitte einen Betrag größer als 0 eingeben.',
+    errorInvalidAmount: 'Bitte gib einen gültigen positiven Betrag ein.',
     errorFetch:
       'Fehler beim Abrufen der Wechselkurse. Bitte versuche es erneut.'
   },
@@ -111,7 +106,6 @@ export const TRANSLATIONS: Record<Lang, UiTexts> = {
     localeTooltip:
       'Controla como números e moedas são exibidos (separadores, símbolo, etc.).',
     convert: 'Converter',
-    converting: 'Convertendo...',
     convertedPrefix: 'Convertido:',
     rateLabel: 'Taxa:',
     inverseRateLabel: 'Inversa:',
@@ -119,7 +113,7 @@ export const TRANSLATIONS: Record<Lang, UiTexts> = {
       'Você está convertendo de {from} para {to}. As taxas vêm de open.er-api.com e podem mudar ao longo do tempo.',
     historyTitle: 'Conversões recentes',
     clearHistory: 'Limpar',
-    errorInvalidAmount: 'Informe um valor maior que 0.',
+    errorInvalidAmount: 'Por favor, insira um valor positivo válido.',
     errorFetch:
       'Erro ao buscar a taxa de câmbio. Tente novamente mais tarde.'
   },
@@ -132,7 +126,6 @@ export const TRANSLATIONS: Record<Lang, UiTexts> = {
     localeTooltip:
       'Controlla come vengono visualizzati numeri e valute (separatore decimale, simbolo, ecc.).',
     convert: 'Converti',
-    converting: 'Conversione in corso...',
     convertedPrefix: 'Convertito:',
     rateLabel: 'Tasso:',
     inverseRateLabel: 'Inverso:',
@@ -140,7 +133,7 @@ export const TRANSLATIONS: Record<Lang, UiTexts> = {
       'Stai convertendo da {from} a {to}. I tassi provengono da open.er-api.com e possono variare nel tempo.',
     historyTitle: 'Conversioni recenti',
     clearHistory: 'Cancella',
-    errorInvalidAmount: "Inserisci un importo maggiore di 0.",
+    errorInvalidAmount: " Per favore inserisci un importo positivo valido.",
     errorFetch:
       'Errore durante il recupero del tasso di cambio. Riprova più tardi.'
   }
