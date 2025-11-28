@@ -73,6 +73,5 @@
   {/if}
 </div>
 
-<style lang="scss">
-  @import "./LanguageDropdown.scss";
-</style>
+<style lang="scss" src="./LanguageDropdown.scss"></style>
+

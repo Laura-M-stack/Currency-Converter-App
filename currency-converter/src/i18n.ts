@@ -32,7 +32,7 @@ export const TRANSLATIONS: Record<Lang, UiTexts> = {
     rateLabel: 'Rate:',
     inverseRateLabel: 'Inverse:',
     pairExplanationTemplate:
-      'You are converting from {from} to {to}. Rates come from open.er-api.com and may change over time.',
+      'You are converting from {from} to {to}. Rates are provided by open.er-api.com and are updated once per day under the free plan.',
     historyTitle: 'Recent conversions',
     clearHistory: 'Clear',
     errorInvalidAmount: 'Please enter a valid positive number.',
@@ -51,7 +51,7 @@ export const TRANSLATIONS: Record<Lang, UiTexts> = {
     rateLabel: 'Tasa:',
     inverseRateLabel: 'Inversa:',
     pairExplanationTemplate:
-      'Estás convirtiendo de {from} a {to}. Las tasas provienen de open.er-api.com y pueden variar con el tiempo.',
+      'Estás convirtiendo de {from} a {to}. Las tasas provienen de open.er-api.com y se actualizan una vez al día según el plan gratuito.',
     historyTitle: 'Conversiones recientes',
     clearHistory: 'Limpiar',
     errorInvalidAmount: 'Por favor ingresa un monto positivo válido.',
@@ -70,7 +70,7 @@ export const TRANSLATIONS: Record<Lang, UiTexts> = {
     rateLabel: 'Taux :',
     inverseRateLabel: 'Inverse :',
     pairExplanationTemplate:
-      'Vous convertissez de {from} vers {to}. Les taux proviennent de open.er-api.com et peuvent varier.',
+      'Vous convertissez de {from} vers {to}. Les taux proviennent de open.er-api.com et sont mis à jour une fois par jour dans le cadre du plan gratuit.',
     historyTitle: 'Conversions récentes',
     clearHistory: 'Effacer',
     errorInvalidAmount: 'Veuillez saisir un montant positif valide.',
@@ -90,7 +90,7 @@ export const TRANSLATIONS: Record<Lang, UiTexts> = {
     rateLabel: 'Kurs:',
     inverseRateLabel: 'Umgekehrt:',
     pairExplanationTemplate:
-      'Du wandelst von {from} in {to} um. Die Kurse stammen von open.er-api.com und können sich ändern.',
+      'Du wandelst von {from} in {to} um. Die Kurse werden von open.er-api.com bereitgestellt und im Rahmen des kostenlosen Tarifs einmal täglich aktualisiert.',
     historyTitle: 'Letzte Umrechnungen',
     clearHistory: 'Löschen',
     errorInvalidAmount: 'Bitte gib einen gültigen positiven Betrag ein.',
@@ -110,7 +110,7 @@ export const TRANSLATIONS: Record<Lang, UiTexts> = {
     rateLabel: 'Taxa:',
     inverseRateLabel: 'Inversa:',
     pairExplanationTemplate:
-      'Você está convertendo de {from} para {to}. As taxas vêm de open.er-api.com e podem mudar ao longo do tempo.',
+      'Você está convertendo de {from} para {to}. As taxas são fornecidas por open.er-api.com e são atualizadas uma vez por dia no plano gratuito.',
     historyTitle: 'Conversões recentes',
     clearHistory: 'Limpar',
     errorInvalidAmount: 'Por favor, insira um valor positivo válido.',
@@ -130,7 +130,7 @@ export const TRANSLATIONS: Record<Lang, UiTexts> = {
     rateLabel: 'Tasso:',
     inverseRateLabel: 'Inverso:',
     pairExplanationTemplate:
-      'Stai convertendo da {from} a {to}. I tassi provengono da open.er-api.com e possono variare nel tempo.',
+      'Stai convertendo da {from} a {to}. I tassi sono forniti da open.er-api.com e vengono aggiornati una volta al giorno con il piano gratuito.',
     historyTitle: 'Conversioni recenti',
     clearHistory: 'Cancella',
     errorInvalidAmount: " Per favore inserisci un importo positivo valido.",

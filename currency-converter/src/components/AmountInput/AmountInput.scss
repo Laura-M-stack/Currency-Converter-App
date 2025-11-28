@@ -23,8 +23,8 @@
   padding: 0.55rem 0.8rem;
   font-size: 0.95rem;
   font-family: inherit;
-  background: color-mix(in srgb, var(--background-color) 88%, white 12%);
-  border: 1px solid var(--accent-color);
+  background: var(--background-color);
+  border: 1px solid var(--accent-color) !important;
   border-radius: 6px;
 
   color: var(--text-color);
@@ -36,7 +36,7 @@
     box-shadow 0.15s ease;
 
   &:hover {
-    background: color-mix(in srgb, var(--background-color) 80%, white 20%);
+    background-color: var(--select-bg) !important;
     border-color: var(--primary-color);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
   }
@@ -71,11 +71,11 @@
 }
 
 .dark .custom-input {
-  background: color-mix(in srgb, var(--secondary-color) 82%, black 18%);
+  background: var(--background-color);
   border-color: rgba(255, 255, 255, 0.16);
 
   &:hover {
-    background: color-mix(in srgb, var(--secondary-color) 72%, black 28%);
+    background: var(--background-color);
     border-color: var(--primary-color);
   }
 }

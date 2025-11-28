@@ -18,12 +18,10 @@
   let isOpen = false;
 
   function handleClick() {
-    // alterno estado visual de la flecha
     isOpen = !isOpen;
   }
 
   function handleBlur() {
-    // si pierde foco, aseguramos flecha hacia abajo
     isOpen = false;
   }
 </script>

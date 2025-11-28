@@ -4,6 +4,7 @@
   position: relative;
   display: inline-flex;
   align-items: center;
+  z-index: 2000;
 }
 
 .lang-dropdown__button {
@@ -12,13 +13,17 @@
   gap: 0.4rem;
   padding: 0.2rem 0.7rem;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--background-color) 90%, white 10%);
-  border: 1px solid var(--accent-color);
+  background-color: transparent !important;
+  border: 2px solid var(--accent-color) !important;
   color: var(--text-color);
   cursor: pointer;
   outline: none;
-  border-width: 1px;
-  border-style: solid;
+}
+
+.lang-dropdown__button:hover {
+  background-color: var(--accent-color) !important;
+  border-color: v.$accent-color;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
 }
 
 .lang-dropdown__flag {
@@ -29,21 +34,27 @@
 
 .lang-dropdown__chevron {
   font-size: 1rem;
+  color: var(--primary-color);
+}
+
+.lang-dropdown__chevron:hover {
+  color: whitesmoke;
 }
 
 .lang-dropdown__menu {
   position: absolute;
   top: calc(100% + 0.3rem);
-  left: 0;
+  right: 0;
   min-width: 170px;
   padding: 0.25rem 0;
   margin: 0;
   border-radius: 0.5rem;
-  background: color-mix(in srgb, var(--background-color) 95%, white 5%);
+  background-color: var(--select-bg) !important;
   border: 1px solid var(--accent-color);
   list-style: none;
-  z-index: 50;
+  z-index: 3000;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+
 }
 
 .lang-dropdown__option {
@@ -52,7 +63,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: transparent;
+  background-color: var(--select-bg);
   border: none;
   color: var(--text-color);
   font-size: 0.9rem;
@@ -62,14 +73,23 @@
 }
 
 .lang-dropdown__option:hover {
-  background: color-mix(in srgb, var(--accent-color) 30%, transparent);
+  background-color: var(--primary-color);
+  color: #ffffff;
 }
 
 .dark .lang-dropdown__button {
-  background: color-mix(in srgb, var(--secondary-color) 82%, black 18%);
+  background-color: var(--background-color);
   border-color: rgba(255, 255, 255, 0.16);
 }
 
 .dark .lang-dropdown__menu {
-  background: color-mix(in srgb, var(--secondary-color) 90%, black 10%);
+  background-color: var(--background-color);
+}
+
+.dark .lang-dropdown__option:hover {
+  background-color: var(--secondary-color);
+}
+
+.dark .lang-dropdown__chevron {
+  color: var(--text-color);
 }

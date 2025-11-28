@@ -32,10 +32,8 @@
       return null;
     }
 
-    // permitir coma o punto como decimal
     const normalized = raw.replace(",", ".").trim();
 
-    // opcional: limitar a números con hasta 2 decimales
     if (!/^\d+(\.\d{1,2})?$/.test(normalized)) {
       return null;
     }
@@ -44,7 +42,7 @@
 
     if (!Number.isFinite(num)) return null;
     if (num <= 0) return null; // > 0
-    if (num > 1_000_000_000) return null; // limite razonable
+    if (num > 1_000_000_000) return null;
 
     return num;
   }

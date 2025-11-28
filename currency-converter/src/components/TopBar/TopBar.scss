@@ -6,8 +6,10 @@
   justify-content: space-between;
   align-items: center;
   padding: v.$spacing-md v.$spacing-md;
-  border-bottom: 1px solid var(--primary-color);
+  border-bottom: 2px solid; 
+  border-image: linear-gradient(135deg, var(--select-bg), var(--secondary-color)) 1;
   background: linear-gradient(135deg, var(--secondary-color), var(--select-bg));
+  max-width: 100% !important;
 
   h1 {
     font-size: 1.5rem;
@@ -24,8 +26,8 @@
 }
 
 .dark .top-bar {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-  background: linear-gradient(135deg, v.$background, v.$secondary);
+  border-bottom: 1px solid var(--primary-color);
+  background: linear-gradient(135deg, var(--select-bg), var(--secondary-color));
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 

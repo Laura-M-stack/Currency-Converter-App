@@ -1,13 +1,13 @@
 @use './variables' as v;
 
 :root {
-  --primary-color: #0077b6;
-  --secondary-color: #01a8ef;
-  --text-color: #0a1a2f; 
+  --primary-color: #006297;
+  --secondary-color: #0793d0;
+  --text-color: #0a1a2f;
   --title-text: #ffffff;
   --background-color: #caf0f8;
-  --select-bg: #90e0ef;
-  --error-color: #e63946;    
+  --select-bg: #b6eff9;
+  --error-color: #e63946;
   --input-bg: #ffffff;
   --input-border: rgba(0, 0, 0, 0.15);
   --pill-bg: #e5e7eb;
@@ -17,10 +17,11 @@
 }
 
 .dark {
-  --background-color: #020617;
-  --secondary-color: #01a8ef;
+  --primary-color: #006297;
+  --secondary-color: #0793d0;
   --text-color: #e2e8f0;
   --title-text: #ffffff;
+  --background-color: #020617;
   --select-bg: #020f2a;
   --primary-color: #38bdf8;
   --error-color: #e63946;

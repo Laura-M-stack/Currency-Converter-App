@@ -42,9 +42,10 @@
   gap: v.$spacing-md;
   position: relative;
   z-index: 1;
-  overflow: visible;
+  overflow-x: hidden;
+  overflow-y: visible;
 
-  @media (max-width: 576px) {
+  @include m.respond(sm) {
     min-height: 100%;
     padding-block: 60px;
     max-width: 95%;
@@ -57,6 +58,7 @@
   border: 1px solid var(--accent-color);
   -webkit-backdrop-filter: blur(18px);
   backdrop-filter: blur(18px);
+  z-index: 0;
 
   box-shadow:
     0 22px 40px rgba(0, 0, 0, 0.65),

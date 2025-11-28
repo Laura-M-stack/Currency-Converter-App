@@ -16,12 +16,10 @@
   let isOpen = false;
 
   function handleClick() {
-    // Cada click alterna el estado visual del dropdown
     isOpen = !isOpen;
   }
 
   function handleBlur() {
-    // Si el select pierde el foco, aseguramos que quede "cerrado"
     isOpen = false;
   }
 </script>
