@@ -1,5 +1,7 @@
 # Currency Converter - Svelte + TypeScript
 
+🔗 Live Demo: https://laura-m-stack.github.io/Currency-Converter-App/
+
 A clean, responsive and multilingual currency converter built with **Svelte**, featuring:
 
 - Real‑time currency conversion (Open ER API)
