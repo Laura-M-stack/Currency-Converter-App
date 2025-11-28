@@ -4,7 +4,7 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  z-index: 2000;
+  z-index: 2000 !important;
 }
 
 .lang-dropdown__button {
@@ -52,9 +52,8 @@
   background-color: var(--select-bg) !important;
   border: 1px solid var(--accent-color);
   list-style: none;
-  z-index: 3000;
+  z-index: 3000 !important;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
-
 }
 
 .lang-dropdown__option {
@@ -84,6 +83,7 @@
 
 .dark .lang-dropdown__menu {
   background-color: var(--background-color);
+  z-index: 3000 !important;
 }
 
 .dark .lang-dropdown__option:hover {

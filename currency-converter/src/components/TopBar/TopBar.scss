@@ -5,6 +5,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 50;
   padding: v.$spacing-md v.$spacing-md;
   border-bottom: 2px solid; 
   border-image: linear-gradient(135deg, var(--select-bg), var(--secondary-color)) 1;
