@@ -1,144 +1,257 @@
-export type Lang = 'en' | 'es' | 'fr' | 'de' | 'pt' | 'it';
+export const LANGS = ['en', 'es', 'fr', 'de', 'pt', 'it'] as const;
+export type Lang = (typeof LANGS)[number];
+
+export const LANG_NAMES: Record<Lang, string> = {
+  en: 'English',
+  es: 'Español',
+  fr: 'Français',
+  de: 'Deutsch',
+  pt: 'Português',
+  it: 'Italiano',
+};
+
+export function isLang(value: unknown): value is Lang {
+  return typeof value === 'string' && (LANGS as readonly string[]).includes(value);
+}
+
+/** Number formats offered in the selector (the "automatic" option derives one from the language). */
+export const LOCALES = [
+  { code: 'en-US', label: 'English (US)' },
+  { code: 'en-GB', label: 'English (UK)' },
+  { code: 'es-AR', label: 'Español (Argentina)' },
+  { code: 'es-ES', label: 'Español (España)' },
+  { code: 'es-MX', label: 'Español (México)' },
+  { code: 'fr-FR', label: 'Français (France)' },
+  { code: 'de-DE', label: 'Deutsch (Deutschland)' },
+  { code: 'pt-BR', label: 'Português (Brasil)' },
+  { code: 'it-IT', label: 'Italiano (Italia)' },
+] as const;
+
+export function isSupportedLocale(value: unknown): value is string {
+  return typeof value === 'string' && LOCALES.some((l) => l.code === value);
+}
+
+const FALLBACK_LOCALE: Record<Lang, string> = {
+  en: 'en-US',
+  es: 'es-AR',
+  fr: 'fr-FR',
+  de: 'de-DE',
+  pt: 'pt-BR',
+  it: 'it-IT',
+};
+
+/** Prefers the browser's own region for that language (es-MX user → es-MX), else a sensible default. */
+export function defaultLocaleFor(lang: Lang, browserLocales: readonly string[] = browserLanguages()): string {
+  const match = browserLocales.find((l) => l.toLowerCase().startsWith(`${lang}-`));
+  if (match) {
+    try {
+      return Intl.getCanonicalLocales(match)[0];
+    } catch {
+      /* fall through */
+    }
+  }
+  return FALLBACK_LOCALE[lang];
+}
+
+export function browserLanguages(): readonly string[] {
+  if (typeof navigator === 'undefined') return [];
+  return navigator.languages?.length ? navigator.languages : [navigator.language];
+}
+
+export function detectBrowserLang(browserLocales: readonly string[] = browserLanguages()): Lang {
+  for (const locale of browserLocales) {
+    const base = locale.slice(0, 2).toLowerCase();
+    if (isLang(base)) return base;
+  }
+  return 'en';
+}
 
 export type UiTexts = {
   title: string;
-  amountLabel: string;
-  fromLabel: string;
-  toLabel: string;
-  localeLabel: string;
-  localeTooltip: string;
-  convert: string;
-  convertedPrefix: string;
-  rateLabel: string;
-  inverseRateLabel: string;
-  pairExplanationTemplate: string;
-  historyTitle: string;
-  clearHistory: string;
+  send: string;
+  receive: string;
+  swap: string;
+  chooseCurrency: string;
+  searchPlaceholder: string;
+  noResults: string;
+  updated: string;
+  source: string;
+  loading: string;
+  numberFormat: string;
+  automatic: string;
+  recent: string;
+  clear: string;
+  repeatConversion: string;
   errorInvalidAmount: string;
   errorFetch: string;
+  errorRateMissing: string;
+  retry: string;
+  language: string;
+  themeToDark: string;
+  themeToLight: string;
+  sourceCode: string;
 };
 
 export const TRANSLATIONS: Record<Lang, UiTexts> = {
   en: {
-    title: 'Currency Converter',
-    amountLabel: 'Amount',
-    fromLabel: 'From',
-    toLabel: 'To',
-    localeLabel: 'Locale',
-    localeTooltip:
-      'Controls how numbers and currencies are formatted (decimal and thousand separators, symbol position, etc.).',
-    convert: 'Convert',
-    convertedPrefix: 'Converted:',
-    rateLabel: 'Rate:',
-    inverseRateLabel: 'Inverse:',
-    pairExplanationTemplate:
-      'You are converting from {from} to {to}. Rates are provided by open.er-api.com and are updated once per day under the free plan.',
-    historyTitle: 'Recent conversions',
-    clearHistory: 'Clear',
-    errorInvalidAmount: 'Please enter a valid positive number.',
-    errorFetch: 'Error fetching conversion data. Please try again.'
+    title: 'Currency converter',
+    send: 'You send',
+    receive: 'You get',
+    swap: 'Swap currencies',
+    chooseCurrency: 'Choose currency',
+    searchPlaceholder: 'Search currency or code',
+    noResults: 'No currency matches “{q}”.',
+    updated: 'Updated {time}',
+    source: 'Rates from open.er-api.com, refreshed once a day.',
+    loading: 'Loading rates…',
+    numberFormat: 'Number format',
+    automatic: 'Automatic ({locale})',
+    recent: 'Recent',
+    clear: 'Clear',
+    repeatConversion: 'Convert {amount} {from} to {to}',
+    errorInvalidAmount: 'Enter a valid amount greater than 0.',
+    errorFetch: 'Couldn’t load exchange rates. Check your connection.',
+    errorRateMissing: 'No rate available for {from} → {to}.',
+    retry: 'Retry',
+    language: 'Language',
+    themeToDark: 'Switch to dark mode',
+    themeToLight: 'Switch to light mode',
+    sourceCode: 'Source code',
   },
   es: {
-    title: 'Conversor de moneda',
-    amountLabel: 'Monto',
-    fromLabel: 'De',
-    toLabel: 'A',
-    localeLabel: 'Formato regional',
-    localeTooltip:
-      'Define cómo se muestran números y monedas (separadores, símbolo, etc.).',
-    convert: 'Convertir',
-    convertedPrefix: 'Convertido:',
-    rateLabel: 'Tasa:',
-    inverseRateLabel: 'Inversa:',
-    pairExplanationTemplate:
-      'Estás convirtiendo de {from} a {to}. Las tasas provienen de open.er-api.com y se actualizan una vez al día según el plan gratuito.',
-    historyTitle: 'Conversiones recientes',
-    clearHistory: 'Limpiar',
-    errorInvalidAmount: 'Por favor ingresa un monto positivo válido.',
-    errorFetch: 'Hubo un error al obtener la tasa. Intentá nuevamente.'
+    title: 'Conversor de monedas',
+    send: 'Envías',
+    receive: 'Recibes',
+    swap: 'Invertir monedas',
+    chooseCurrency: 'Elegir moneda',
+    searchPlaceholder: 'Buscar moneda o código',
+    noResults: 'Ninguna moneda coincide con “{q}”.',
+    updated: 'Actualizado {time}',
+    source: 'Tasas de open.er-api.com, se actualizan una vez al día.',
+    loading: 'Cargando tasas…',
+    numberFormat: 'Formato de números',
+    automatic: 'Automático ({locale})',
+    recent: 'Recientes',
+    clear: 'Borrar',
+    repeatConversion: 'Convertir {amount} {from} a {to}',
+    errorInvalidAmount: 'Ingresa un monto válido mayor que 0.',
+    errorFetch: 'No se pudieron cargar las tasas. Revisa tu conexión.',
+    errorRateMissing: 'No hay tasa disponible para {from} → {to}.',
+    retry: 'Reintentar',
+    language: 'Idioma',
+    themeToDark: 'Cambiar a modo oscuro',
+    themeToLight: 'Cambiar a modo claro',
+    sourceCode: 'Código fuente',
   },
   fr: {
     title: 'Convertisseur de devises',
-    amountLabel: 'Montant',
-    fromLabel: 'De',
-    toLabel: 'Vers',
-    localeLabel: 'Format régional',
-    localeTooltip:
-      'Contrôle l’affichage des nombres et des devises (séparateurs, symbole, etc.).',
-    convert: 'Convertir',
-    convertedPrefix: 'Converti :',
-    rateLabel: 'Taux :',
-    inverseRateLabel: 'Inverse :',
-    pairExplanationTemplate:
-      'Vous convertissez de {from} vers {to}. Les taux proviennent de open.er-api.com et sont mis à jour une fois par jour dans le cadre du plan gratuit.',
-    historyTitle: 'Conversions récentes',
-    clearHistory: 'Effacer',
-    errorInvalidAmount: 'Veuillez saisir un montant positif valide.',
-    errorFetch:
-      'Erreur lors de la récupération du taux de change. Veuillez réessayer.'
+    send: 'Vous envoyez',
+    receive: 'Vous recevez',
+    swap: 'Inverser les devises',
+    chooseCurrency: 'Choisir une devise',
+    searchPlaceholder: 'Rechercher une devise ou un code',
+    noResults: 'Aucune devise ne correspond à « {q} ».',
+    updated: 'Mis à jour {time}',
+    source: 'Taux fournis par open.er-api.com, mis à jour une fois par jour.',
+    loading: 'Chargement des taux…',
+    numberFormat: 'Format des nombres',
+    automatic: 'Automatique ({locale})',
+    recent: 'Récents',
+    clear: 'Effacer',
+    repeatConversion: 'Convertir {amount} {from} en {to}',
+    errorInvalidAmount: 'Saisissez un montant valide supérieur à 0.',
+    errorFetch: 'Impossible de charger les taux. Vérifiez votre connexion.',
+    errorRateMissing: 'Aucun taux disponible pour {from} → {to}.',
+    retry: 'Réessayer',
+    language: 'Langue',
+    themeToDark: 'Passer en mode sombre',
+    themeToLight: 'Passer en mode clair',
+    sourceCode: 'Code source',
   },
   de: {
     title: 'Währungsrechner',
-    amountLabel: 'Betrag',
-    fromLabel: 'Von',
-    toLabel: 'Nach',
-    localeLabel: 'Regionale Einstellung',
-    localeTooltip:
-      'Steuert, wie Zahlen und Währungen formatiert werden (Trennzeichen, Symbol, usw.).',
-    convert: 'Umrechnen',
-    convertedPrefix: 'Umgerechnet:',
-    rateLabel: 'Kurs:',
-    inverseRateLabel: 'Umgekehrt:',
-    pairExplanationTemplate:
-      'Du wandelst von {from} in {to} um. Die Kurse werden von open.er-api.com bereitgestellt und im Rahmen des kostenlosen Tarifs einmal täglich aktualisiert.',
-    historyTitle: 'Letzte Umrechnungen',
-    clearHistory: 'Löschen',
-    errorInvalidAmount: 'Bitte gib einen gültigen positiven Betrag ein.',
-    errorFetch:
-      'Fehler beim Abrufen der Wechselkurse. Bitte versuche es erneut.'
+    send: 'Sie senden',
+    receive: 'Sie erhalten',
+    swap: 'Währungen tauschen',
+    chooseCurrency: 'Währung wählen',
+    searchPlaceholder: 'Währung oder Code suchen',
+    noResults: 'Keine Währung passt zu „{q}“.',
+    updated: 'Aktualisiert {time}',
+    source: 'Kurse von open.er-api.com, einmal täglich aktualisiert.',
+    loading: 'Kurse werden geladen…',
+    numberFormat: 'Zahlenformat',
+    automatic: 'Automatisch ({locale})',
+    recent: 'Zuletzt',
+    clear: 'Löschen',
+    repeatConversion: '{amount} {from} in {to} umrechnen',
+    errorInvalidAmount: 'Geben Sie einen gültigen Betrag größer als 0 ein.',
+    errorFetch: 'Kurse konnten nicht geladen werden. Prüfen Sie Ihre Verbindung.',
+    errorRateMissing: 'Kein Kurs für {from} → {to} verfügbar.',
+    retry: 'Erneut versuchen',
+    language: 'Sprache',
+    themeToDark: 'Zum dunklen Modus wechseln',
+    themeToLight: 'Zum hellen Modus wechseln',
+    sourceCode: 'Quellcode',
   },
   pt: {
-    title: 'Conversor de moeda',
-    amountLabel: 'Valor',
-    fromLabel: 'De',
-    toLabel: 'Para',
-    localeLabel: 'Formato regional',
-    localeTooltip:
-      'Controla como números e moedas são exibidos (separadores, símbolo, etc.).',
-    convert: 'Converter',
-    convertedPrefix: 'Convertido:',
-    rateLabel: 'Taxa:',
-    inverseRateLabel: 'Inversa:',
-    pairExplanationTemplate:
-      'Você está convertendo de {from} para {to}. As taxas são fornecidas por open.er-api.com e são atualizadas uma vez por dia no plano gratuito.',
-    historyTitle: 'Conversões recentes',
-    clearHistory: 'Limpar',
-    errorInvalidAmount: 'Por favor, insira um valor positivo válido.',
-    errorFetch:
-      'Erro ao buscar a taxa de câmbio. Tente novamente mais tarde.'
+    title: 'Conversor de moedas',
+    send: 'Você envia',
+    receive: 'Você recebe',
+    swap: 'Inverter moedas',
+    chooseCurrency: 'Escolher moeda',
+    searchPlaceholder: 'Buscar moeda ou código',
+    noResults: 'Nenhuma moeda corresponde a “{q}”.',
+    updated: 'Atualizado {time}',
+    source: 'Taxas de open.er-api.com, atualizadas uma vez por dia.',
+    loading: 'Carregando taxas…',
+    numberFormat: 'Formato de números',
+    automatic: 'Automático ({locale})',
+    recent: 'Recentes',
+    clear: 'Limpar',
+    repeatConversion: 'Converter {amount} {from} para {to}',
+    errorInvalidAmount: 'Insira um valor válido maior que 0.',
+    errorFetch: 'Não foi possível carregar as taxas. Verifique sua conexão.',
+    errorRateMissing: 'Nenhuma taxa disponível para {from} → {to}.',
+    retry: 'Tentar novamente',
+    language: 'Idioma',
+    themeToDark: 'Mudar para o modo escuro',
+    themeToLight: 'Mudar para o modo claro',
+    sourceCode: 'Código-fonte',
   },
   it: {
     title: 'Convertitore di valuta',
-    amountLabel: 'Importo',
-    fromLabel: 'Da',
-    toLabel: 'A',
-    localeLabel: 'Formato locale',
-    localeTooltip:
-      'Controlla come vengono visualizzati numeri e valute (separatore decimale, simbolo, ecc.).',
-    convert: 'Converti',
-    convertedPrefix: 'Convertito:',
-    rateLabel: 'Tasso:',
-    inverseRateLabel: 'Inverso:',
-    pairExplanationTemplate:
-      'Stai convertendo da {from} a {to}. I tassi sono forniti da open.er-api.com e vengono aggiornati una volta al giorno con il piano gratuito.',
-    historyTitle: 'Conversioni recenti',
-    clearHistory: 'Cancella',
-    errorInvalidAmount: " Per favore inserisci un importo positivo valido.",
-    errorFetch:
-      'Errore durante il recupero del tasso di cambio. Riprova più tardi.'
-  }
+    send: 'Invii',
+    receive: 'Ricevi',
+    swap: 'Inverti valute',
+    chooseCurrency: 'Scegli valuta',
+    searchPlaceholder: 'Cerca valuta o codice',
+    noResults: 'Nessuna valuta corrisponde a “{q}”.',
+    updated: 'Aggiornato {time}',
+    source: 'Tassi forniti da open.er-api.com, aggiornati una volta al giorno.',
+    loading: 'Caricamento dei tassi…',
+    numberFormat: 'Formato dei numeri',
+    automatic: 'Automatico ({locale})',
+    recent: 'Recenti',
+    clear: 'Cancella',
+    repeatConversion: 'Converti {amount} {from} in {to}',
+    errorInvalidAmount: 'Inserisci un importo valido maggiore di 0.',
+    errorFetch: 'Impossibile caricare i tassi. Controlla la connessione.',
+    errorRateMissing: 'Nessun tasso disponibile per {from} → {to}.',
+    retry: 'Riprova',
+    language: 'Lingua',
+    themeToDark: 'Passa alla modalità scura',
+    themeToLight: 'Passa alla modalità chiara',
+    sourceCode: 'Codice sorgente',
+  },
 };
 
 export function getUiTexts(lang: Lang): UiTexts {
   return TRANSLATIONS[lang] ?? TRANSLATIONS.en;
+}
+
+/** Replaces {placeholders}; unknown placeholders are left as-is so missing data is visible in development. */
+export function t(template: string, vars: Record<string, string | number> = {}): string {
+  return template.replace(/\{(\w+)\}/g, (match, key: string) =>
+    key in vars ? String(vars[key]) : match,
+  );
 }
