@@ -1,17 +1,42 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency converter – Laura Moyano</title>
+    <meta name="description" content="Fast, multilingual currency converter with live exchange rates, 160+ currencies and light/dark mode." />
+    <meta name="theme-color" content="#efeee9" />
+    <link rel="icon" type="image/svg+xml" href="/Currency-Converter-App/favicon.svg" />
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/Currency-Converter-App/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Currency Converter – Laura Moyano</title>
-  <script type="module" crossorigin src="/Currency-Converter-App/assets/index-BZ7D3w-Q.js"></script>
-  <link rel="stylesheet" crossorigin href="/Currency-Converter-App/assets/index-B0vMrEIv.css">
-</head>
+    <link rel="preconnect" href="https://open.er-api.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
 
-<body>
-  <div id="app"></div>
-</body>
+    <!--
+      Applies the theme before the first paint to avoid a light flash in dark mode.
+      Keep in sync with savedTheme() in src/lib/settings.svelte.ts.
+    -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('cc:theme');
+          if (t !== 'light' && t !== 'dark') {
+            var legacy = localStorage.getItem('darkMode');
+            t = legacy === 'true' ? 'dark' : legacy === 'false' ? 'light'
+              : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.classList.toggle('dark', t === 'dark');
+          document.documentElement.style.colorScheme = t;
+        } catch (e) {}
+      })();
+    </script>
+    <script type="module" crossorigin src="/Currency-Converter-App/assets/index-DyNnEHoN.js"></script>
+    <link rel="stylesheet" crossorigin href="/Currency-Converter-App/assets/index-RVSn4G2R.css">
+  </head>
 
+  <body>
+    <div id="app"></div>
+    <noscript>This app needs JavaScript to fetch exchange rates.</noscript>
+  </body>
 </html>
