@@ -1,4 +1,4 @@
-/* Light theme (direction A). Cobalt accent: white text on the fill, darker shade for accent text. */
+/* Light theme (direction A). Teal accent: white text on the fill, darker shade for accent text. */
 :root {
   --page: #efeee9;
   --card: #ffffff;
@@ -8,11 +8,11 @@
   --border-strong: #c9c6bb;
   --text: #14161a;
   --muted: #5f636b;
-  --accent: #2f5bea;
-  --accent-hover: #2449c8;
+  --accent: #0f766e;
+  --accent-hover: #115e59;
   --on-accent: #ffffff;
-  --accent-text: #2449c8;
-  --focus: #2f5bea;
+  --accent-text: #0f766e;
+  --focus: #0f766e;
   --danger: #b42318;
   --danger-bg: #fef3f2;
   --shadow: 0 1px 2px rgb(20 22 26 / 0.04), 0 12px 32px rgb(20 22 26 / 0.06);
@@ -36,11 +36,11 @@
   --border-strong: #3a4250;
   --text: #e8eaed;
   --muted: #8f96a1;
-  --accent: #6b8cff;
-  --accent-hover: #8aa5ff;
-  --on-accent: #0b1020;
-  --accent-text: #8aa5ff;
-  --focus: #8aa5ff;
+  --accent: #2dd4bf;
+  --accent-hover: #5eead4;
+  --on-accent: #04201c;
+  --accent-text: #5eead4;
+  --focus: #5eead4;
   --danger: #f97066;
   --danger-bg: #2a1416;
   --shadow: none;
